@@ -126,7 +126,7 @@ public class Main {
                 "zero", "one", "two", "three", "four",
                 "five", "six", "seven", "eight", "nine"
         };
-        double value = 0d;
+        double value = -1d;
         for(int index = 0; index < numberWord.length; index ++) {
             if(word.equals(numberWord[index])){
                 value = index;
@@ -134,6 +134,9 @@ public class Main {
             }
 
         }
+        if(value == -1d)
+         value = Double.parseDouble(word);
+
         return value;
     }
 }
