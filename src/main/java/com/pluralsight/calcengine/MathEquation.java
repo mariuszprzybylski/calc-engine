@@ -1,10 +1,45 @@
 package com.pluralsight.calcengine;
 
 public class MathEquation {
-    double leftVal;
-    double rightVal;
-    char opCode;
-    double result;
+    public double getLeftVal() {
+        return leftVal;
+    }
+
+    public double getRightVal() {
+        return rightVal;
+    }
+
+    public char getOpCode() {
+        return opCode;
+    }
+
+    public double getResult() {
+        return result;
+    }
+
+    public void setLeftVal(double leftVal) {
+        this.leftVal = leftVal;
+    }
+
+    public void setRightVal(double rightVal) {
+        this.rightVal = rightVal;
+    }
+
+    public void setOpCode(char opCode) {
+        this.opCode = opCode;
+    }
+
+    public void setResult(double result) {
+        this.result = result;
+    }
+
+    private double leftVal;
+   private double rightVal;
+   private char opCode;
+   private double result;
+
+   private static int numberOfCalculations;
+   private static double sumOfResults;
 
     public MathEquation(){}
 
@@ -15,6 +50,19 @@ public class MathEquation {
         this(opCode);
         this.leftVal = leftVal;
         this.rightVal = rightVal;
+    }
+
+    public void execute(double leftVal, double rightVal){
+    this.leftVal = leftVal;
+    this.rightVal = rightVal;
+    execute();
+    }
+
+    public void execute(int leftVal, int rightVal){
+        this.leftVal = leftVal;
+        this.rightVal = rightVal;
+        execute();
+        result = (int) result;
     }
 
     void execute() {
@@ -37,5 +85,11 @@ public class MathEquation {
                 break;
         }
 
+        numberOfCalculations ++;
+        sumOfResults += result;
+    }
+
+    public static double getAverageResult(){
+        return sumOfResults / numberOfCalculations;
     }
 }
